@@ -320,6 +320,8 @@ class virtual ['res] lifter =
        | Parsetree.Ppat_exception x0 ->
            this#constr "Ast_406.Parsetree.pattern_desc"
              ("Ppat_exception", [this#lift_Parsetree_pattern x0])
+       | Parsetree.Ppat_effect _ ->
+           raise (Failure "not implemented")
        | Parsetree.Ppat_extension x0 ->
            this#constr "Ast_406.Parsetree.pattern_desc"
              ("Ppat_extension", [this#lift_Parsetree_extension x0])
@@ -329,6 +331,7 @@ class virtual ['res] lifter =
                [this#lift_Asttypes_loc this#lift_Longident_t x0;
                this#lift_Parsetree_pattern x1]) : Parsetree.pattern_desc ->
                                                     'res)
+
     method lift_Parsetree_core_type : Parsetree.core_type -> 'res=
       (fun
          { Parsetree.ptyp_desc = ptyp_desc; Parsetree.ptyp_loc = ptyp_loc;
@@ -504,6 +507,8 @@ class virtual ['res] lifter =
            this#constr "Ast_406.Parsetree.structure_item_desc"
              ("Pstr_exception",
                [this#lift_Parsetree_extension_constructor x0])
+       | Parsetree.Pstr_effect _ ->
+           raise (Failure "not implemented")
        | Parsetree.Pstr_module x0 ->
            this#constr "Ast_406.Parsetree.structure_item_desc"
              ("Pstr_module", [this#lift_Parsetree_module_binding x0])
@@ -847,6 +852,8 @@ class virtual ['res] lifter =
            this#constr "Ast_406.Parsetree.signature_item_desc"
              ("Psig_exception",
                [this#lift_Parsetree_extension_constructor x0])
+       | Parsetree.Psig_effect _ ->
+           raise (Failure "not implemented")
        | Parsetree.Psig_module x0 ->
            this#constr "Ast_406.Parsetree.signature_item_desc"
              ("Psig_module", [this#lift_Parsetree_module_declaration x0])
